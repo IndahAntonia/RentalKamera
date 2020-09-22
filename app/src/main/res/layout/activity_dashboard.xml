@@ -32,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Kode"
+                    android:text="Order"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Merk"
+                    android:text="Kotak Masuk"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="match_parent"
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Warna"
+                    android:text="History"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="match_parent"
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Gambar"
+                    android:text="Profile"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Hargasewa"
+                    android:text="Bantuan"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="match_parent"

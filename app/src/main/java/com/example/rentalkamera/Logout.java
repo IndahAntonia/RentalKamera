@@ -10,28 +10,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
-public class AdminActivity extends AppCompatActivity {
+public class Logout extends AppCompatActivity {
 
-    LinearLayout LnDaftarUser;
-    Button logoutadmin;
-
-    SharedPreferences mLogin;
+    Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_logout);
 
-        mLogin = getSharedPreferences("login",MODE_PRIVATE);
-        mLogin.edit().putString("logged", mLogin.getString("logged", "missing")).apply();
-
-        LnDaftarUser = findViewById(R.id.LnDaftarUser);
-        logoutadmin = findViewById(R.id.btnLogout);
+        btnLogout = findViewById(R.id.btnLogout);
         SharedPreferences mLogin = getSharedPreferences("login", Context.MODE_PRIVATE);
 
-        logoutadmin.setOnClickListener(new View.OnClickListener() {
+        btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final DialogInterface.OnClickListener dialog = new DialogInterface.OnClickListener() {
@@ -45,7 +37,7 @@ public class AdminActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = mLogin.edit();
                                 editor.clear();
                                 editor.apply();
-                                Intent intent = new Intent(AdminActivity.this, MainActivity.class);
+                                Intent intent = new Intent(Logout.this, MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
 
@@ -61,18 +53,8 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-        LnDaftarUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminActivity.this, Listactivity.class);
-                startActivity(intent);
-            }
-        });
     }
+
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -92,6 +74,6 @@ public class AdminActivity extends AppCompatActivity {
         });
         AlertDialog alert = builder.create();
         alert.show();
-    }
 
+    }
 }
