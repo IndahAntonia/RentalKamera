@@ -38,14 +38,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.UserViewHolder> {
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent dea = new Intent(holder.itemView.getContext(), Infoactivity.class);
-                dea.putExtra("id", dataList.get(position).getId());
-                dea.putExtra("username", dataList.get(position).getNama());
-                dea.putExtra("email", dataList.get(position).getEmail());
-                dea.putExtra("nohp", dataList.get(position).getNohp());
-                dea.putExtra("alamat", dataList.get(position).getAlamat());
-                dea.putExtra("noktp", dataList.get(position).getNoktp());
-                holder.itemView.getContext().startActivity(dea);
+                Intent in = new Intent(holder.itemView.getContext(), Infoactivity.class);
+                in.putExtra("id", dataList.get(position).getId());
+                in.putExtra("nama", dataList.get(position).getEmail());
+                in.putExtra("email", dataList.get(position).getNama());
+                in.putExtra("nohp", dataList.get(position).getNohp());
+                in.putExtra("alamat", dataList.get(position).getAlamat());
+                in.putExtra("noktp", dataList.get(position).getNoktp());
+
+                holder.itemView.getContext().startActivity(in);
             }
         });
     }

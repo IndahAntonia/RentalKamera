@@ -7,6 +7,8 @@ public class Model {
     private String nama;
     private String password;
     private String noktp;
+    private String alamat;
+    private String nohp;
 
     public String getAlamat() {
         return alamat;
@@ -15,8 +17,6 @@ public class Model {
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
-
-    private String alamat;
 
     public String getId() {
         return id;
@@ -66,6 +66,6 @@ public class Model {
         this.nohp = nohp;
     }
 
-    private String nohp;
+
 
 }

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Infoactivity extends AppCompatActivity {
+public class    Infoactivity extends AppCompatActivity {
     TextView tvId, tvNama, tvEmail, tvNohp, tvAlamat, tvNoktp;
     Button btnedit;
 
@@ -28,8 +28,8 @@ public class Infoactivity extends AppCompatActivity {
         //Toolbar toolbar = findViewById(R.id.toolbar);
 
         //setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Info Customer");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle("Info Customer");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
         final String id = extras.getString("id");

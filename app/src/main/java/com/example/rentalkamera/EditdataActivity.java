@@ -22,6 +22,8 @@ import org.json.JSONObject;
 public class EditdataActivity extends AppCompatActivity {
 
     Button btnUpdate;
+    String id;
+Model model;
     EditText edEmail, edNmaLengkap, edNoKtp, edNoHp, edAlamat;
 
     @Override
@@ -45,6 +47,7 @@ public class EditdataActivity extends AppCompatActivity {
         final String nohp = extras.getString("nohp");
         final String alamat = extras.getString("alamat");
 
+//        id = model.getId();
         edEmail.setText(email);
         edNmaLengkap.setText(nama);
         edNoKtp.setText(noktp);
@@ -61,13 +64,13 @@ public class EditdataActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AndroidNetworking.post("http://192.168.6.159/RentalMobil/EditData.php")
+                AndroidNetworking.post("http://192.168.6.12/RentalKamera/Editdata.php")
                         .addBodyParameter("id", id)
-                        .addBodyParameter("email", edEmail.getText().toString())
                         .addBodyParameter("nama", edNmaLengkap.getText().toString())
-                        .addBodyParameter("noktp", edNoKtp.getText().toString())
+                        .addBodyParameter("email", edEmail.getText().toString())
                         .addBodyParameter("nohp", edNoHp.getText().toString())
                         .addBodyParameter("alamat", edAlamat.getText().toString())
+                        .addBodyParameter("noktp", edNoKtp.getText().toString())
                         .setPriority(Priority.LOW)
                         .build()
                         .getAsJSONObject(new JSONObjectRequestListener() {
@@ -82,13 +85,13 @@ public class EditdataActivity extends AppCompatActivity {
                                         returnIntent.putExtra("refresh", "refresh");
                                         setResult(23, returnIntent);
                                         finish();
-                                        Toast.makeText(EditdataActivity.this, "Edit Suskses", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(EditdataActivity.this, "Edit Successful", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(EditdataActivity.this, "Edit gagal", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(EditdataActivity.this, "Edit Failed", Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
-                                    System.out.println("DEA" + e.getMessage());
+                                    System.out.println("Indah" + e.getMessage());
                                     Toast.makeText(EditdataActivity.this, "Edit failed", Toast.LENGTH_SHORT).show();
                                 }
                             }

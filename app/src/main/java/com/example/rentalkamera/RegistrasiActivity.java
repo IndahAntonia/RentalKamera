@@ -26,7 +26,7 @@ public class RegistrasiActivity extends AppCompatActivity {
     TextView txtRegristrasi;
     EditText edEmail;
     EditText edPassword;
-    EditText edNmaLengkap;
+    EditText edNama;
     EditText edNoKtp;
     EditText edNoHp;
     EditText edAlamat;
@@ -47,7 +47,7 @@ public class RegistrasiActivity extends AppCompatActivity {
 
         edEmail = findViewById(R.id.edEmail);
         edPassword = findViewById(R.id.edPassword);
-        edNmaLengkap = findViewById(R.id.edNmaLengkap);
+        edNama = findViewById(R.id.edNama);
         edNoKtp = findViewById(R.id.edNoKtp);
         edNoHp = findViewById(R.id.edNoHp);
         edAlamat = findViewById(R.id.edAlamat);
@@ -58,13 +58,13 @@ public class RegistrasiActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edEmail.getText().toString();
                 String password = edPassword.getText().toString();
-                String nama = edNmaLengkap.getText().toString();
+                String nama = edNama.getText().toString();
                 String noktp = edNoKtp.getText().toString();
                 String nohp = edNoHp.getText().toString();
                 String alamat = edAlamat.getText().toString().trim();
                 progressBar.setTitle("Register In...");
                 progressBar.show();
-                AndroidNetworking.post("http://192.168.6.159/RentalMobil/RegisterCostumer.php")
+                AndroidNetworking.post("http://192.168.6.12/RentalKamera/RegisterCustomer.php")
                         .addBodyParameter("email", email)
                         .addBodyParameter("password", password)
                         .addBodyParameter("nama", nama)
@@ -77,12 +77,12 @@ public class RegistrasiActivity extends AppCompatActivity {
                         .getAsJSONObject(new JSONObjectRequestListener() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                Log.d("hasil", "onResponse: ");
+                                Log.i("hasil", "onResponse: ");
                                 try {
                                     JSONObject hasil = response.getJSONObject("hasil");
                                     String status = hasil.getString("STATUS");
                                     String message = hasil.getString("MESSAGE");
-                                    Log.d("STATUS", "onResponse: " + status);
+                                    Log.i("STATUS", "onResponse: " + status);
                                     if (status.equals("SUCCESS")) {
                                         mLogin.edit().putBoolean("logged",true).apply();
                                         Intent intent = new Intent(RegistrasiActivity.this, Costumeractivity.class);
@@ -101,9 +101,9 @@ public class RegistrasiActivity extends AppCompatActivity {
                             @Override
                             public void onError(ANError anError) {
                                 progressBar.dismiss();
-                                Log.d("dea", "onError: " + anError.getErrorDetail());
-                                Log.d("dea", "onError: " + anError.getErrorBody());
-                                Log.d("dea", "onError: " + anError.getErrorCode());
+                                Log.i("daa", "onError: " + anError.getErrorDetail());
+                                Log.i("daa", "onError: " + anError.getErrorBody());
+                                Log.i("daa", "onError: " + anError.getErrorCode());
 
                             }
                         });

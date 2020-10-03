@@ -7,18 +7,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class Costumeractivity extends AppCompatActivity {
 
-    LinearLayout LnProfile;
+        LinearLayout LnProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_costumeractivity);
 
-        LnProfile = findViewById(R.id.LnProfile);
+        LnProfile = findViewById(R.id.profile);
         LnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,3 +45,7 @@ public class Costumeractivity extends AppCompatActivity {
                 }).create().show();
     }
 }
+
+
+
+

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Registrasi">
+    tools:context=".RegistrasiActivity">
 
     <TextView
         android:id="@+id/txtRegristrasi"
@@ -15,7 +15,7 @@
         android:gravity="center"
         android:textColor="@color/coloraccent"
         android:text="REGISTRASI"
-        android:textSize="37dp"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -26,7 +26,6 @@
 
         <EditText
             android:id="@+id/edEmail"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email" />
@@ -53,10 +52,10 @@
         android:layout_margin="20dp">
 
         <EditText
-            android:id="@+id/edNmaLengkap"
+            android:id="@+id/edNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nama Lengkap" />
+            android:hint="Nama" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

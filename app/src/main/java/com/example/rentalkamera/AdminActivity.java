@@ -17,6 +17,7 @@ public class AdminActivity extends AppCompatActivity {
     LinearLayout LnDaftarUser;
     Button logoutadmin;
 
+
     SharedPreferences mLogin;
 
     @Override
