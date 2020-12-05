@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddbarangActivity">
+
+    <ImageView
+        android:id="@+id/ivKamera"
+        android:layout_width="401dp"
+        android:layout_height="174dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/kameraku" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="30dp">
+
+        <EditText
+            android:id="@+id/etKode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kode kamera" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <EditText
+            android:id="@+id/etMerk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Merk Barang" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp">
+
+        <EditText
+            android:id="@+id/etWarna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Warna Kamera" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <EditText
+            android:id="@+id/etHarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Harga Sewa Kamera" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnBuat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cornerbutton"
+        android:layout_margin="20dp"
+        android:text="Buat"
+        android:textColor="@color/lightGrayLine"
+        />
+</LinearLayout>

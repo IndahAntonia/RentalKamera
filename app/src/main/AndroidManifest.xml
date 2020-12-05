@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rentalkamera">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
+        android:name=".RS"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,25 +13,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Infoactivity"
-            android:parentActivityName=".Listactivity"
-            android:screenOrientation="portrait"></activity>
-
-        <activity android:name=".EditdataActivity" />
-        <activity android:name=".RegistrasiActivity" />
-        <activity android:name=".Listactivity" />
-        <activity android:name=".Logout" />
-        <activity android:name=".Costumeractivity" />
-        <activity android:name=".AdminActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".AddbarangActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ViewbarangActivity" />
+        <activity
+            android:name=".Infoactivity"
+            android:parentActivityName=".Listactivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".EditdataActivity" />
+        <activity android:name=".RegistrasiActivity" />
+        <activity android:name=".Listactivity"
+            android:parentActivityName=".AdminActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Logout" />
+        <activity android:name=".Costumeractivity" />
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".MainActivity">
+
+        </activity>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class    Infoactivity extends AppCompatActivity {
+public class  Infoactivity extends AppCompatActivity {
     TextView tvId, tvNama, tvEmail, tvNohp, tvAlamat, tvNoktp;
     Button btnedit;
 

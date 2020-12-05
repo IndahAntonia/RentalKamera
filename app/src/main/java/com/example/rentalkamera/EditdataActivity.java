@@ -23,7 +23,7 @@ public class EditdataActivity extends AppCompatActivity {
 
     Button btnUpdate;
     String id;
-Model model;
+    Model model;
     EditText edEmail, edNmaLengkap, edNoKtp, edNoHp, edAlamat;
 
     @Override
@@ -64,7 +64,7 @@ Model model;
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AndroidNetworking.post("http://192.168.6.12/RentalKamera/Editdata.php")
+                AndroidNetworking.post("http://192.168.6.93/RentalKamera/Editdata.php")
                         .addBodyParameter("id", id)
                         .addBodyParameter("nama", edNmaLengkap.getText().toString())
                         .addBodyParameter("email", edEmail.getText().toString())

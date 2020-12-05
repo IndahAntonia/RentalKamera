@@ -13,24 +13,50 @@
         android:background="@color/colorPrimary"/>
 
     <LinearLayout
-        android:id="@+id/LnDaftarUser"
+        android:id="@+id/LnDaftarUser1"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:gravity="center"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/cerclebackgroundorange">
+        android:background="@drawable/cerclebackgroundorange2">
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DAFTAR USER ACCOUNT"
+            android:text="DAFTAR USER ACCOUNT1"
             android:gravity="center"
             android:textColor="@color/lightGrayLine"
             android:textStyle="bold"
             android:textSize="18dp"
             />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/LnDaftarUser2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/cerclebackgroundorange2"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176"
+        tools:layout_editor_absoluteX="40dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="DAFTAR USER ACCOUNT2"
+            android:textColor="@color/lightGrayLine"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

@@ -14,7 +14,8 @@ import android.widget.LinearLayout;
 
 public class AdminActivity extends AppCompatActivity {
 
-    LinearLayout LnDaftarUser;
+    LinearLayout LnDaftarUser2;
+    LinearLayout LnDaftarUser1;
     Button logoutadmin;
 
 
@@ -28,7 +29,8 @@ public class AdminActivity extends AppCompatActivity {
         mLogin = getSharedPreferences("login",MODE_PRIVATE);
         mLogin.edit().putString("logged", mLogin.getString("logged", "missing")).apply();
 
-        LnDaftarUser = findViewById(R.id.LnDaftarUser);
+        LnDaftarUser1 = findViewById(R.id.LnDaftarUser1);
+        LnDaftarUser2 = findViewById(R.id.LnDaftarUser2);
         logoutadmin = findViewById(R.id.btnLogout);
         SharedPreferences mLogin = getSharedPreferences("login", Context.MODE_PRIVATE);
 
@@ -66,10 +68,18 @@ public class AdminActivity extends AppCompatActivity {
 
 
 
-        LnDaftarUser.setOnClickListener(new View.OnClickListener() {
+        LnDaftarUser2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminActivity.this, Listactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LnDaftarUser1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminActivity.this, ViewbarangActivity.class);
                 startActivity(intent);
             }
         });

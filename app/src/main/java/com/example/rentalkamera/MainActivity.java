@@ -70,43 +70,39 @@ public class MainActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString();
                 progressBar.setTitle("Logging In...");
                 progressBar.show();
-                AndroidNetworking.post("http://192.168.137.1/RentalKamera/LoginCustomer.php")
-                        .addBodyParameter("email" , email)
-                        .addBodyParameter("password" , password)
+                AndroidNetworking.post("http://192.168.6.93/RentalKamera/LoginCustomer.php")
+                        .addBodyParameter("email", email)
+                        .addBodyParameter("password", password)
                         .setPriority(Priority.LOW)
                         .build()
                         .getAsJSONObject(new JSONObjectRequestListener() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                Log.i("hasil", "onResponse: " + response);
+                                Log.d("hasil", "onResponse: " + response);
                                 try {
                                     JSONObject PAYLOAD = response.optJSONObject("PAYLOAD");
-                                    String respon = PAYLOAD.getString("respon");
+                                    boolean sukses = PAYLOAD.getBoolean("respon");
                                     String roleuser = PAYLOAD.getString("roleuser");
-                                    Log.d("PAYLOAD", "onResponse: " + respon);
-                                    if (respon.equals("true")) {
-                                        Log.d("PAYLOAD", "onResponse: " + respon);
-                                        if (roleuser.equals("2")) {
-                                            mLogin.edit().putString("logged", "admin").apply();
-                                            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                            progressBar.dismiss();
-                                        } else if (roleuser.equals("1")) {
-                                            mLogin.edit().putString("logged", "customer").apply();
-                                            Intent intent = new Intent(MainActivity.this, Costumeractivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                            progressBar.dismiss();
-                                        } else {
-                                            Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
-                                            progressBar.dismiss();
-                                        }
+                                    Log.d("PAYLOAD", "onResponse: " + PAYLOAD);
+                                    if (sukses && roleuser.equals("admin")) {
+                                        mLogin.edit().putString("logged", "admin").apply();
+                                        Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                        progressBar.dismiss();
+                                    } else if (sukses && roleuser.equals("customer")) {
+                                        mLogin.edit().putString("logged", "customer").apply();
+                                        Intent intent = new Intent(MainActivity.this, Costumeractivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                        progressBar.dismiss();
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                                        progressBar.dismiss();
                                     }
-                                    else {
-                                        Toast.makeText(MainActivity.this,"error",Toast.LENGTH_SHORT).show();
-                                    }
-                                } catch ( JSONException e) {
+
+
+                                } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
@@ -114,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onError(ANError anError) {
                                 progressBar.dismiss();
-                                Log.i("test", "onError: " + anError.getErrorDetail());
-                                Log.i("test", "onError: " + anError.getErrorBody());
-                                Log.i("test", "onError: " + anError.getErrorCode());
+                                Log.d("test", "onError: " + anError.getErrorDetail());
+                                Log.d("test", "onError: " + anError.getErrorBody());
+                                Log.d("test", "onError: " + anError.getErrorCode());
                             }
                         });
 

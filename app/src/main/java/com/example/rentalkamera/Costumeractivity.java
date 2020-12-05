@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 public class Costumeractivity extends AppCompatActivity {
 
         LinearLayout LnProfile;
+        LinearLayout LnOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,15 @@ public class Costumeractivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Costumeractivity.this, Logout.class);
                 startActivity(intent);
+
+         LnOrder = findViewById(R.id.Order);
+         LnOrder.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(Costumeractivity.this,ViewbarangActivity.class);
+                 startActivity(intent);
+             }
+         });
             }
         });
     }

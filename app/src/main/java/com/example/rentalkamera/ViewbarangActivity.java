@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,33 +29,40 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Listactivity extends AppCompatActivity {
+public class ViewbarangActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Adapter adapter;
-
-    ArrayList<Model> datalist;
-
+    private Adapterbarang adapter;
+    private ImageView ivAdd;
+    ArrayList<ModelMasterbarang> datalist;
     CardView cardview;
-
-    TextView txtnama, txtemail;
+    TextView txtmerkkamera, txtwarnakamera,txthargasewa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listactivity);
+        setContentView(R.layout.activity_viewbarang);
 
-        txtnama = findViewById(R.id.txtemail);
-        txtemail = findViewById(R.id.txtnama);
+        txtmerkkamera = findViewById(R.id.txtmerk);
+        txtwarnakamera = findViewById(R.id.txtwarna);
+        txthargasewa  = findViewById(R.id.txthargasewa);
 
-      cardview = findViewById(R.id.cardku);
+        cardview = findViewById(R.id.cardbarangview);
         recyclerView = findViewById(R.id.list);
+        ivAdd = findViewById(R.id.ivAdd);
+        ivAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ViewbarangActivity.this,AddbarangActivity.class);
+                startActivity(i);
+            }
+        });
 
-      Toolbar toolbar = findViewById(R.id.toolbar);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
 
-       setSupportActionBar(toolbar);
-       getSupportActionBar().setTitle("Data Customer");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //setSupportActionBar(toolbar);
+        //getSupportActionBar().setTitle("Data Customer");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getData();
 
@@ -63,35 +71,33 @@ public class Listactivity extends AppCompatActivity {
     private void getData() {
         datalist = new ArrayList<>();
         Log.i("daa", "onCreate: ");
-
-        AndroidNetworking.post("http://192.168.6.93/RentalKamera/Viewdata.php")
-                .addBodyParameter("roleuser", "2")
+                 AndroidNetworking.get("http://192.168.6.93/RentalKamera/viewdatakamera.php")
                 .setTag("test")
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Toast.makeText(ViewbarangActivity.this, "STATUS 200 OK...", Toast.LENGTH_SHORT).show();
+                        Log.d("TAG", "onResponse: "+response);
                         try {
                             JSONArray data = response.getJSONArray("result");
-
                             for (int i = 0; i < data.length(); i++) {
-
-                                Model model = new Model();
+                               // Toast.makeText(ViewbarangActivity.this, "STATUS 200 OK...", Toast.LENGTH_SHORT).show();
+                                ModelMasterbarang modelku = new ModelMasterbarang();
                                 JSONObject object = data.getJSONObject(i);
-                                model.setId(object.getString("id"));
-                                model.setNama(object.getString("nama"));
-                                model.setEmail(object.getString("email"));
-                                model.setNohp(object.getString("nohp"));
-                                model.setAlamat(object.getString("alamat"));
-                                model.setNoktp(object.getString("noktp"));
-                                datalist.add(model);
-
+                                modelku.setId(object.getString("id"));
+                                modelku.setKodekamera(object.getString("kodekamera"));
+                                modelku.setMerkkamera(object.getString("merkkamera"));
+                                modelku.setWarnakamera(object.getString("warnakamera"));
+                                modelku.setHargasewa(object.getString("hargasewa"));
+                                modelku.setGambarkamera(object.getString("gambarkameraa"));
+                                datalist.add(modelku);
                             }
 
-                            adapter = new Adapter(datalist);
+                            adapter = new Adapterbarang(datalist);
 
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Listactivity.this);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ViewbarangActivity.this);
 
                             recyclerView.setLayoutManager(layoutManager);
 
